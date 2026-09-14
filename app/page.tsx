@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Entrance } from "@/components/Entrance";
 import { HubRoom } from "@/components/HubRoom";
 
 export default function Home() {
   const [phase, setPhase] = useState<"gate" | "leaving" | "inside">("gate");
+  const entered = useRef(false);
 
   function enter() {
-    if (phase !== "gate") return;
+    if (entered.current) return;
+    entered.current = true;
     setPhase("leaving");
     window.setTimeout(() => setPhase("inside"), 780);
   }

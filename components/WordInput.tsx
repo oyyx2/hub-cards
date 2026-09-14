@@ -67,7 +67,7 @@ export function WordInput({ onSubmitWord, disabled = false }: WordInputProps) {
           aria-invalid={Boolean(error)}
           aria-describedby={error ? "hub-word-error" : "hub-word-help"}
           onValueChange={(next) => {
-            setValue(next);
+            setValue(next.slice(0, 20));
             if (error) setError(null);
           }}
           className="h-12 rounded-xl border-[#c6a46a]/40 bg-[#0c140f]/80 px-4 text-base text-[#f4ead6] placeholder:text-[#d8cbb0]/45 focus-visible:border-[#c6a46a] focus-visible:ring-[#c6a46a]/40"

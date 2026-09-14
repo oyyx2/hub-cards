@@ -78,12 +78,12 @@ export function HubRoom({ active = true }: HubRoomProps) {
 
   return (
     <div
-      className={cn("hub-room relative flex min-h-dvh flex-col text-[#efe3cb]")}
+      className={cn("hub-room relative flex h-dvh max-h-dvh flex-col overflow-hidden text-[#efe3cb]")}
       aria-hidden={!active}
       inert={!active ? true : undefined}
     >
       <div className="hub-grain pointer-events-none absolute inset-0" />
-      <header className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-4 pt-[max(1.25rem,env(safe-area-inset-top))] text-center sm:px-6">
+      <header className="relative z-10 mx-auto w-full max-w-6xl shrink-0 px-4 pb-4 pt-[max(1.25rem,env(safe-area-inset-top))] text-center sm:px-6">
         <p className="font-heading text-sm tracking-[0.42em] text-[#c6a46a]">The Hub</p>
         <h1 className="mt-3 font-heading text-[1.85rem] leading-tight text-[#f4ead6] sm:text-4xl">
           What do you bring to The Hub?
@@ -93,7 +93,7 @@ export function HubRoom({ active = true }: HubRoomProps) {
         </p>
       </header>
 
-      <main className="relative z-10 mx-auto w-full max-w-6xl flex-1 px-4 pb-6 sm:px-6">
+      <main className="relative z-10 mx-auto min-h-0 w-full max-w-6xl flex-1 overflow-y-auto px-4 pb-4 sm:px-6">
         {status === "loading" ? (
           <p className="py-24 text-center text-sm tracking-[0.2em] text-[#d8cbb0]/70">
             Opening the archive…
@@ -109,7 +109,7 @@ export function HubRoom({ active = true }: HubRoomProps) {
         ) : null}
       </main>
 
-      <div className="sticky bottom-0 z-20 border-t border-[#c6a46a]/15 bg-[#0d1510]/92 backdrop-blur-md">
+      <div className="relative z-20 shrink-0 border-t border-[#c6a46a]/15 bg-[#0d1510]/92 backdrop-blur-md">
         <div className="mx-auto w-full max-w-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 sm:px-6">
           {notice ? (
             <p

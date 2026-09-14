@@ -24,6 +24,10 @@ export function Entrance({ exiting = false, onEnter }: EntranceProps) {
         "focus-visible:ring-2 focus-visible:ring-[#7eb6ff]/70 focus-visible:ring-inset",
         exiting && "pointer-events-none scale-[1.08] opacity-0",
       )}
+      onPointerDown={(event) => {
+        if (event.button !== 0) return;
+        onEnter();
+      }}
     >
       <span className="hub-house flex flex-col items-center gap-4 rounded-3xl px-8 py-10 transition-transform duration-300 hover:scale-110">
         <span className="hub-house-glow relative grid size-28 place-items-center sm:size-32">

@@ -79,8 +79,15 @@ export function PersonalityCard({
           <div className="absolute inset-0">
             <GeneratedVisual word={card.word} seed={card.seed} parallax={parallax} />
           </div>
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0b120c] via-[#0b120c]/88 to-transparent px-3 pb-3 pt-10 text-center">
-            <p className="font-heading text-[1.05rem] tracking-[0.22em] text-[#f1e6cf]">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0b120c] via-[#0b120c]/88 to-transparent px-2.5 pb-3 pt-10 text-center">
+            <p
+              className={cn(
+                "font-heading text-[#f1e6cf]",
+                displayWord(card.word).length > 11
+                  ? "text-[0.78rem] leading-tight tracking-[0.08em] break-all"
+                  : "text-[1.05rem] tracking-[0.22em]",
+              )}
+            >
               {displayWord(card.word)}
             </p>
             <p className="mt-1 font-sans text-[0.68rem] tracking-[0.28em] text-[#c6a46a]/90">
