@@ -86,10 +86,10 @@ export function HubRoom({ active = true }: HubRoomProps) {
       <header className="relative z-10 mx-auto w-full max-w-6xl shrink-0 px-4 pb-4 pt-[max(1.25rem,env(safe-area-inset-top))] text-center sm:px-6">
         <p className="font-heading text-sm tracking-[0.42em] text-[#c6a46a]">The Hub</p>
         <h1 className="mt-3 font-heading text-[1.85rem] leading-tight text-[#f4ead6] sm:text-4xl">
-          What do you bring to The Hub?
+          Welcome to The Hub.
         </h1>
         <p className="mt-2 text-sm tracking-wide text-[#d8cbb0]/80">
-          Describe yourself in one word.
+          Get to know us — and let us get to know you.
         </p>
       </header>
 
