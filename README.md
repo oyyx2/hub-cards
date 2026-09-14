@@ -9,20 +9,42 @@ This is an MVP: no login, no AI image generation, and no dragging. Cards are gen
 ```bash
 npm install
 cp .env.example .env.local
-# add your Supabase values, or leave them blank to use a local browser archive
+```
+
+Edit `.env.local` with your Supabase values, or leave them blank to use a local browser archive.
+
+```bash
 npm run dev
 ```
 
 Open [http://127.0.0.1:43147](http://127.0.0.1:43147).
 
-Without Supabase keys, cards are stored in `localStorage` so you can still click through the full experience. They will not be shared with other visitors until you connect a project.
+Without Supabase keys, cards are stored in `localStorage`. They will not be shared with other visitors until you connect a project.
+
+```bash
+npm run build
+npm run start
+```
+
+## Environment variables
+
+Only these two values are required. Both are safe to expose in the browser. Never add the Supabase **service role** key.
+
+| Name | Where to find it | Example |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → Data API → Project URL | `https://abcd1234.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API Keys → `anon` `public` | long JWT starting with `eyJ` |
+
+Local file: `.env.local` (gitignored; copy from `.env.example`).
+
+Vercel: Project Settings → Environment Variables. Add both for **Production**, **Preview**, and **Development**, then redeploy.
 
 ## Supabase setup
 
 1. Create a project at [supabase.com](https://supabase.com).
 2. Open **SQL Editor** and run `supabase/schema.sql`.
-3. Confirm **Authentication → Providers** can stay unused. This app is anonymous.
-4. Copy the project URL and **anon public** key from **Project Settings → API**.
+3. Leave authentication unused. This app is anonymous.
+4. Copy the project URL and **anon public** key.
 5. Do **not** put the service role key in this app.
 
 The SQL file creates:
@@ -72,40 +94,56 @@ Leave update and delete policies off so the public client cannot change or remov
 
 In **Database → Publications**, make sure `cards` is part of `supabase_realtime`. The schema file does this automatically when possible.
 
-## Environment variables
-
-Put these in `.env.local` for local development:
-
-```
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
-
-`NEXT_PUBLIC_` values are exposed to the browser on purpose. Only the anon key belongs here.
-
-On Vercel, add the same two variables in **Project Settings → Environment Variables**.
-
 ## Push to GitHub
 
+This project is already a git repo on `main`. If you are working in Cursor’s New Project flow, create the GitHub repository first:
+
+1. In the Cursor agent view, click **Create repo**.
+2. Choose the GitHub account and a public name such as `the-hub`.
+3. Create the repository.
+
+After that remote exists, push:
+
 ```bash
-git add .
-git commit -m "Add The Hub campaign page"
 git branch -M main
-git remote add origin https://github.com/your-user/the-hub.git
 git push -u origin main
 ```
 
-Skip `git remote add` if the remote already exists.
+If you created an empty GitHub repo yourself and need to point this project at it:
+
+```bash
+git remote add github https://github.com/YOUR_GITHUB_USERNAME/the-hub.git
+git push -u github main
+```
+
+Replace `YOUR_GITHUB_USERNAME` and `the-hub` with your account and repo name. Use a GitHub personal access token as the password if GitHub asks you to sign in.
 
 ## Deploy to Vercel
 
-1. Push the repo to GitHub.
-2. Import the project in [Vercel](https://vercel.com/new).
-3. Framework preset: Next.js.
-4. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
-5. Deploy.
+1. Sign in at [vercel.com](https://vercel.com) with the same GitHub account.
+2. Open [vercel.com/new](https://vercel.com/new).
+3. Click **Import** next to the `the-hub` GitHub repository.
+4. Framework Preset: **Next.js**. Leave the build command and output directory as the defaults (`next build`, no extra output dir).
+5. Open **Environment Variables** and add:
 
-After the first deploy, open the site on a phone. The entrance house should stay centered, the card wall should scroll, and the input should remain above the mobile browser chrome.
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+   Add each one for Production, Preview, and Development.
+6. Click **Deploy**.
+7. Wait for the build to turn green. Copy the URL, which looks like `https://the-hub-xxxx.vercel.app`.
+
+If you change env vars later, go to **Settings → Environment Variables**, save, then **Deployments → ⋮ → Redeploy**. `NEXT_PUBLIC_` values are baked in at build time, so a redeploy is required.
+
+### After deploy, verify
+
+1. Open the Vercel URL on desktop. Click the house, add a word, confirm the card appears.
+2. Refresh. The same card should still be there (this proves Supabase, not only local storage).
+3. Open the same URL on a phone. The house should stay centered, the wall should scroll, and the input should stay visible.
+4. Add a second word on the phone, refresh, and confirm both cards remain.
+5. Use that Vercel URL for the QR code.
+
+If cards disappear after refresh, the Vercel env vars are missing or the Supabase SQL has not been run.
 
 ## What it does
 
