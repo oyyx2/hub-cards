@@ -127,11 +127,13 @@ export function HubRoom({ active = true }: HubRoomProps) {
         </div>
       </div>
 
-      <CardModal
-        card={selected}
-        number={selectedNumber}
-        onClose={() => setSelected(null)}
-      />
+      {selected ? (
+        <CardModal
+          card={selected}
+          number={selectedNumber}
+          onClose={() => setSelected(null)}
+        />
+      ) : null}
     </div>
   );
 }

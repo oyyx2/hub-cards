@@ -9,19 +9,23 @@ type EntranceProps = {
 
 export function Entrance({ exiting = false, onEnter }: EntranceProps) {
   return (
-    <section
+    <button
+      type="button"
+      onClick={onEnter}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onEnter();
+        }
+      }}
+      aria-label="Enter The Hub"
       className={cn(
-        "fixed inset-0 z-50 flex items-center justify-center bg-black transition-all duration-700 ease-out",
-        exiting && "scale-[1.08] opacity-0",
+        "fixed inset-0 z-[100] flex cursor-pointer touch-manipulation flex-col items-center justify-center bg-black outline-none transition-all duration-700 ease-out",
+        "focus-visible:ring-2 focus-visible:ring-[#7eb6ff]/70 focus-visible:ring-inset",
+        exiting && "pointer-events-none scale-[1.08] opacity-0",
       )}
-      aria-label="The Hub entrance"
     >
-      <button
-        type="button"
-        onClick={onEnter}
-        aria-label="Enter The Hub"
-        className="hub-house group flex cursor-pointer flex-col items-center gap-4 rounded-3xl px-8 py-10 outline-none transition-transform duration-300 hover:scale-110 focus-visible:scale-110 focus-visible:ring-2 focus-visible:ring-[#7eb6ff]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black touch-manipulation"
-      >
+      <span className="hub-house flex flex-col items-center gap-4 rounded-3xl px-8 py-10 transition-transform duration-300 hover:scale-110">
         <span className="hub-house-glow relative grid size-28 place-items-center sm:size-32">
           <HouseMark />
         </span>
@@ -31,8 +35,8 @@ export function Entrance({ exiting = false, onEnter }: EntranceProps) {
         <span className="font-sans text-[0.72rem] tracking-[0.28em] text-[#8ea6d8]/80">
           we Have ur Back
         </span>
-      </button>
-    </section>
+      </span>
+    </button>
   );
 }
 
