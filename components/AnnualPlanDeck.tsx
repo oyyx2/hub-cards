@@ -97,7 +97,7 @@ export function AnnualPlanDeck({
       ) : null}
 
       <div className={styles.stage}>
-        <div className={styles.deck}>
+        <div className={cn(styles.deck, fan.length < 3 && styles.deckCentered)}>
           {fan.map((activity, index) => {
             const isSelected = activity.id === selectedId;
             const receded = Boolean(selectedId) && !isSelected;

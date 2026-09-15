@@ -44,7 +44,12 @@ export function PlanCard({ activity, flipped = false }: PlanCardProps) {
               />
             </svg>
             <div className="absolute inset-x-0 bottom-0 bg-[#f4ead6] px-3 pb-3 pt-4 text-center">
-              <p className="font-heading text-[1.02rem] leading-tight text-[#1a1408]">
+              <p
+                className={cn(
+                  "font-heading leading-tight text-[#1a1408]",
+                  activity.title.length > 26 ? "text-[0.92rem]" : "text-[1.02rem]",
+                )}
+              >
                 {activity.title}
               </p>
               <p className="mt-1 text-[0.68rem] tracking-[0.22em] text-[#7a5a28]">

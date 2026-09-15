@@ -6,6 +6,9 @@
 
 .pageShell {
   min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: max(1.25rem, env(safe-area-inset-top)) 1rem max(1.5rem, env(safe-area-inset-bottom));
   background:
     radial-gradient(ellipse 80% 46% at 50% -8%, rgb(198 164 106 / 12%), transparent 58%),
@@ -226,6 +229,10 @@
 }
 
 @media (max-width: 640px) {
+  .header {
+    margin-bottom: 0.9rem;
+  }
+
   .stage {
     min-height: 20.5rem;
   }
@@ -236,6 +243,11 @@
     scroll-snap-type: x mandatory;
     padding-inline: 12vw;
     scrollbar-width: none;
+  }
+
+  .deckCentered {
+    justify-content: center;
+    padding-inline: 1rem;
   }
 
   .deck::-webkit-scrollbar {
