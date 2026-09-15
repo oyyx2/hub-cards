@@ -1,0 +1,249 @@
+.section {
+  position: relative;
+  width: 100%;
+  color: #efe3cb;
+}
+
+.pageShell {
+  min-height: 100dvh;
+  padding: max(1.25rem, env(safe-area-inset-top)) 1rem max(1.5rem, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(ellipse 80% 46% at 50% -8%, rgb(198 164 106 / 12%), transparent 58%),
+    linear-gradient(180deg, #141c14 0%, #0f1711 46%, #0c120e 100%);
+}
+
+.header {
+  margin: 0 auto 1.5rem;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.42em;
+  color: #c6a46a;
+}
+
+.title {
+  margin: 0.7rem 0 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #f4ead6;
+}
+
+.subtitle {
+  margin: 0.55rem 0 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: rgb(216 203 176 / 82%);
+}
+
+.note {
+  margin: 0.45rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: rgb(216 203 176 / 52%);
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  min-height: 22rem;
+  align-items: center;
+  justify-content: center;
+  perspective: 1100px;
+}
+
+.deck {
+  display: flex;
+  width: min(100%, 46rem);
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1.25rem 0 0.5rem;
+}
+
+.slot {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(42vw, 13.5rem);
+  margin-left: -2.4rem;
+  transition:
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 480ms ease,
+    filter 480ms ease;
+}
+
+.slot:first-child {
+  margin-left: 0;
+}
+
+.slotIdle {
+  cursor: pointer;
+  transform: rotate(var(--plan-tilt, 0deg));
+}
+
+.slotReceded {
+  opacity: 0.28;
+  filter: blur(0.4px);
+  pointer-events: none;
+  transform: translateY(18px) rotate(var(--plan-tilt, 0deg)) scale(0.92);
+}
+
+.slotSelected {
+  z-index: 8;
+  margin-left: -2.4rem;
+  transform: translateY(-12px);
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 2 / 3.05;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cardFace {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 1.05rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.cardBack {
+  transform: rotateY(0deg);
+}
+
+.cardFront {
+  transform: rotateY(180deg);
+}
+
+.flipped {
+  transform: rotateY(180deg) scale(1.06);
+}
+
+.sparkle {
+  pointer-events: none;
+  position: absolute;
+  inset: -8%;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 35%, rgb(207 224 255 / 22%), transparent 46%);
+  transition: opacity 500ms ease;
+}
+
+.slotSelected .sparkle {
+  opacity: 1;
+}
+
+.detail {
+  margin: 0.35rem auto 0;
+  max-width: 34rem;
+  text-align: center;
+}
+
+.detailCategory {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c6a46a;
+}
+
+.detailTitle {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 1.55rem;
+  color: #f4ead6;
+}
+
+.detailTiming {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  color: rgb(198 164 106 / 90%);
+}
+
+.detailCopy {
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgb(239 227 203 / 86%);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.drawButton {
+  min-height: 2.75rem;
+  border: 1px solid rgb(198 164 106 / 45%);
+  border-radius: 0.85rem;
+  background: #c6a46a;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  color: #1a1408;
+  cursor: pointer;
+}
+
+.drawButton:hover,
+.drawButton:focus-visible {
+  background: #d4b57a;
+  outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .slotIdle:hover {
+    z-index: 4;
+    transform: translateY(-10px) rotate(var(--plan-tilt, 0deg));
+  }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    min-height: 20.5rem;
+  }
+
+  .deck {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: 12vw;
+    scrollbar-width: none;
+  }
+
+  .deck::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slot,
+  .slotSelected {
+    width: min(68vw, 15.5rem);
+    margin-left: -1.4rem;
+    scroll-snap-align: center;
+  }
+
+  .flipped {
+    transform: rotateY(180deg) scale(1.03);
+  }
+
+  .slotReceded {
+    opacity: 0.18;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slot,
+  .card,
+  .sparkle {
+    transition: none;
+  }
+}
