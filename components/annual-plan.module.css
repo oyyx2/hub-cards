@@ -52,6 +52,15 @@
   color: rgb(216 203 176 / 52%);
 }
 
+.headerCompact {
+  margin-bottom: 0.75rem;
+}
+
+.headerCompact .subtitle,
+.headerCompact .note {
+  display: none;
+}
+
 .progress {
   margin: 0.7rem 0 0;
   font-family: var(--font-cormorant), ui-serif, Georgia, serif;
@@ -198,9 +207,14 @@
 }
 
 .actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 6;
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.85rem 0 max(0.85rem, env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgb(12 18 14 / 0%), rgb(12 18 14 / 92%) 42%);
 }
 
 .drawButton {

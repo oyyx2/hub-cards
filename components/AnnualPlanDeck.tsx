@@ -82,7 +82,7 @@ export function AnnualPlanDeck({
       ) : null}
 
       {showIntro ? (
-        <header className={styles.header}>
+        <header className={cn(styles.header, selected && styles.headerCompact)}>
           <p className={styles.kicker}>THE HUB</p>
           <h1 className={styles.title}>Pick a Card from The Hub</h1>
           <p className={styles.subtitle}>See what we have planned for the year.</p>
