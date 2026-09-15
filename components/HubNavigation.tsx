@@ -5,12 +5,14 @@ import styles from "./hub-nav.module.css";
 type HubNavigationProps = {
   onChooseYou: () => void;
   onChoosePlan: () => void;
+  onChooseTeam: () => void;
   inert?: boolean;
 };
 
 export function HubNavigation({
   onChooseYou,
   onChoosePlan,
+  onChooseTeam,
   inert = false,
 }: HubNavigationProps) {
   return (
@@ -42,14 +44,20 @@ export function HubNavigation({
       <div className={styles.doors}>
         <button type="button" className={`${styles.door} ${styles.doorYou}`} onClick={onChooseYou}>
           <p className={styles.label}>Leave a word</p>
-          <h2 className={styles.heading}>Let us get to know you</h2>
-          <p className={styles.copy}>Leave one word behind and become part of The Hub.</p>
+          <h2 className={styles.heading}>Leave Your Mark</h2>
+          <p className={styles.copy}>Describe yourself in one word and become part of The Hub.</p>
         </button>
 
         <button type="button" className={`${styles.door} ${styles.doorPlan}`} onClick={onChoosePlan}>
           <p className={styles.label}>Draw a card</p>
-          <h2 className={styles.heading}>Explore our annual plan</h2>
+          <h2 className={styles.heading}>Explore Our Plan</h2>
           <p className={styles.copy}>Draw a card and see what we hope to build this year.</p>
+        </button>
+
+        <button type="button" className={`${styles.door} ${styles.doorTeam}`} onClick={onChooseTeam}>
+          <p className={styles.label}>Meet us</p>
+          <h2 className={styles.heading}>Meet The Team</h2>
+          <p className={styles.copy}>Meet the people behind The Hub and see what each of us brings.</p>
         </button>
       </div>
     </section>
