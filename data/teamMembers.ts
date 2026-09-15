@@ -19,7 +19,7 @@ export const teamMembers: TeamMember[] = [
     id: "yuxue-ouyang",
     name: "Yuxue Ouyang",
     role: "President",
-    photo: "/members/yuxue-ouyang.png",
+    photo: "/members/yuxue-ouyang.jpg",
     tagline: "SpongeBob SquarePants",
     experience: [
       "Coordinated product, technical, and community-facing work at an AI startup, including prompt optimization, product discussions, and Telegram community operations.",
@@ -37,7 +37,7 @@ export const teamMembers: TeamMember[] = [
     id: "boris-kriuk",
     name: "Boris Kriuk",
     role: "Vice President — Cabinet coordination and cross-functional execution",
-    photo: "/members/boris-kriuk.png",
+    photo: "/members/boris-kriuk.jpg",
     tagline: "strategic",
     experience: [
       "CTO of STREVIO and AI researcher at HKUST, bridging AI research and practical business applications. Experience spans research communication, strategic planning and multidisciplinary collaboration.",
@@ -55,7 +55,7 @@ export const teamMembers: TeamMember[] = [
     id: "yifei-huang",
     name: "Yifei Huang",
     role: "Director of Finance",
-    photo: "/members/yifei-huang.png",
+    photo: "/members/yifei-huang.jpg",
     tagline: "Supportive",
     experience: [
       "Doing accounting intern at certified public accountant LLP, assists reviewing business expense,budgeting,and expenditures to ensure financial data accuracy, authenticity, and completeness.",

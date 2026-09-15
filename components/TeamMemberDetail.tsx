@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
-import Image from "next/image";
 import { TeamContactLinks } from "@/components/TeamContactLinks";
 import type { TeamMember } from "@/data/teamMembers";
 import styles from "./team.module.css";
@@ -53,11 +52,9 @@ export function TeamMemberDetail({ member, onClose }: TeamMemberDetailProps) {
 
         <div className={styles.detailHero}>
           <div className={styles.detailPhoto}>
-            <Image
+            <img
               src={member.photo}
               alt={`Portrait of ${member.name}`}
-              fill
-              sizes="(max-width: 640px) 100vw, 13.5rem"
               className={styles.photo}
             />
           </div>

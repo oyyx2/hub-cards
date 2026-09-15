@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import type { TeamMember } from "@/data/teamMembers";
 import styles from "./team.module.css";
 
@@ -18,11 +17,9 @@ export function TeamMemberCard({ member, onOpen }: TeamMemberCardProps) {
       aria-label={`Open profile for ${member.name}, ${member.role}`}
     >
       <div className={styles.photoWrap}>
-        <Image
+        <img
           src={member.photo}
           alt={`Portrait of ${member.name}`}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 22rem"
           className={styles.photo}
         />
         <span className={styles.frame} aria-hidden />
