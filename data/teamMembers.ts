@@ -68,6 +68,7 @@ export const teamMembers: TeamMember[] = [
     interests: "photography",
     phrase: "Supportive",
     idea: "Have a special Channel at Canvas for all the mandatory notice, Professional and special event registration portal also the Feedback channel.",
+    linkedin: "https://www.linkedin.com/in/yifei-huang-undefined-926142436",
   },
   {
     id: "yongshi-chen",
