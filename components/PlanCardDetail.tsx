@@ -11,6 +11,7 @@ export function PlanCardDetail({ activity }: PlanCardDetailProps) {
       <p className={styles.detailCategory}>{activity.category}</p>
       <h2 className={styles.detailTitle}>{activity.title}</h2>
       <p className={styles.detailTiming}>{activity.timing}</p>
+      <p className={styles.detailIdea}>{activity.coreIdea}</p>
       <p className={styles.detailCopy}>{activity.description}</p>
     </div>
   );

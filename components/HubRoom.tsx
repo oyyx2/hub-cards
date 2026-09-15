@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { CardModal } from "@/components/CardModal";
 import { CardWall } from "@/components/CardWall";
+import { HubBackButton } from "@/components/HubBackButton";
 import { WordInput } from "@/components/WordInput";
 import { fetchCards, insertCard, isSupabaseConfigured, subscribeToCards } from "@/lib/supabase";
 import { makeSeed } from "@/lib/seed";
@@ -12,9 +13,10 @@ import { cn } from "@/lib/utils";
 
 type HubRoomProps = {
   active?: boolean;
+  onBack?: () => void;
 };
 
-export function HubRoom({ active = true }: HubRoomProps) {
+export function HubRoom({ active = true, onBack }: HubRoomProps) {
   const [cards, setCards] = useState<HubCard[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
   const [selected, setSelected] = useState<HubCard | null>(null);
@@ -84,6 +86,11 @@ export function HubRoom({ active = true }: HubRoomProps) {
     >
       <div className="hub-grain pointer-events-none absolute inset-0" />
       <header className="relative z-10 mx-auto w-full max-w-6xl shrink-0 px-4 pb-4 pt-[max(1.25rem,env(safe-area-inset-top))] text-center sm:px-6">
+        {onBack ? (
+          <div className="mb-3 flex justify-start">
+            <HubBackButton onBack={onBack} />
+          </div>
+        ) : null}
         <p className="font-heading text-sm tracking-[0.42em] text-[#c6a46a]">The Hub</p>
         <h1 className="mt-3 font-heading text-[1.85rem] leading-tight text-[#f4ead6] sm:text-4xl">
           Welcome to The Hub.

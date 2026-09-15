@@ -16,7 +16,16 @@ export function PlanCard({ activity, flipped = false }: PlanCardProps) {
         <CardBack />
       </div>
       <div className={cn(styles.cardFace, styles.cardFront)}>
-        <article className="relative h-full overflow-hidden rounded-[1.05rem] border border-[#c6a46a]/70 bg-[#efe3cb] shadow-[0_18px_40px_rgba(0,0,0,0.35)]">
+        <article
+          className={cn(
+            "relative h-full overflow-hidden rounded-[1.05rem] border bg-[#efe3cb] shadow-[0_18px_40px_rgba(0,0,0,0.35)]",
+            activity.pillar === "hear"
+              ? "border-[#8aa4c8]/75"
+              : activity.theme === "community"
+                ? "border-[#b07a62]/75"
+                : "border-[#c6a46a]/70",
+          )}
+        >
           <div className="absolute inset-[8px] overflow-hidden rounded-[0.8rem] border border-[#243528]/20">
             <div className="h-[68%]">
               <PlanIllustration visual={activity.visual} />

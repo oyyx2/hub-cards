@@ -49,6 +49,15 @@
   color: rgb(216 203 176 / 52%);
 }
 
+.progress {
+  margin: 0.7rem 0 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(198 164 106 / 88%);
+}
+
 .stage {
   position: relative;
   display: flex;
@@ -167,6 +176,15 @@
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   color: rgb(198 164 106 / 90%);
+}
+
+.detailIdea {
+  margin: 0.7rem 0 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: #f4ead6;
 }
 
 .detailCopy {

@@ -1,0 +1,192 @@
+.screen {
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  overflow: hidden;
+  padding:
+    max(1.5rem, env(safe-area-inset-top))
+    1rem
+    max(1.5rem, env(safe-area-inset-bottom));
+  color: #efe3cb;
+}
+
+.watermark {
+  pointer-events: none;
+  position: absolute;
+  inset: auto 50% 8% auto;
+  width: min(70vw, 22rem);
+  transform: translateX(50%);
+  opacity: 0.07;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 32rem;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.42em;
+  color: #c6a46a;
+}
+
+.title {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: clamp(1.85rem, 7vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1.12;
+  color: #f4ead6;
+}
+
+.subtitle {
+  margin: 0.7rem auto 0;
+  max-width: 26rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  line-height: 1.55;
+  color: rgb(216 203 176 / 80%);
+}
+
+.doors {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  max-width: 44rem;
+  margin: 2rem auto 0;
+  flex: 1;
+  align-content: center;
+  gap: 1rem;
+}
+
+.door {
+  position: relative;
+  display: flex;
+  min-height: 13.5rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border: 1px solid rgb(198 164 106 / 32%);
+  border-radius: 1.35rem;
+  padding: 1.45rem 1.35rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 380ms ease,
+    box-shadow 380ms ease;
+}
+
+.door::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 1.05rem;
+  border: 1px solid rgb(244 234 214 / 10%);
+  pointer-events: none;
+}
+
+.doorYou {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 115%, rgb(198 164 106 / 22%), transparent 58%),
+    linear-gradient(180deg, #182318 0%, #10180f 100%);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 28%);
+}
+
+.doorPlan {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 115%, rgb(110 168 255 / 22%), transparent 58%),
+    linear-gradient(180deg, #141c26 0%, #10161d 100%);
+  border-color: rgb(158 196 255 / 28%);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 28%);
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.doorYou .label {
+  color: #c6a46a;
+}
+
+.doorPlan .label {
+  color: #9ec4ff;
+}
+
+.heading {
+  position: relative;
+  z-index: 1;
+  margin: 0.7rem 0 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: clamp(1.45rem, 4vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #f4ead6;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  margin: 0.65rem 0 0;
+  max-width: 18rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgb(216 203 176 / 74%);
+}
+
+@media (min-width: 700px) {
+  .doors {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 2.75rem;
+  }
+
+  .door {
+    min-height: 22rem;
+    padding: 1.75rem 1.6rem 1.8rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .door:hover {
+    transform: translateY(-8px);
+  }
+
+  .doorYou:hover {
+    border-color: rgb(198 164 106 / 70%);
+    box-shadow: 0 22px 48px rgb(0 0 0 / 34%), 0 0 28px rgb(198 164 106 / 12%);
+  }
+
+  .doorPlan:hover {
+    border-color: rgb(158 196 255 / 55%);
+    box-shadow: 0 22px 48px rgb(0 0 0 / 34%), 0 0 28px rgb(110 168 255 / 16%);
+  }
+}
+
+.door:focus-visible {
+  outline: 2px solid #c6a46a;
+  outline-offset: 3px;
+}
+
+.doorPlan:focus-visible {
+  outline-color: #9ec4ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door {
+    transition: none;
+  }
+}

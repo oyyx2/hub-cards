@@ -148,9 +148,13 @@ If cards disappear after refresh, the Vercel env vars are missing or the Supabas
 ## What it does
 
 1. Black entrance with a glowing blue house.
-2. Click or tap the house to enter the dark green card room.
-3. Submit one word (max 20 characters, no spaces or markup).
-4. A unique SVG card is generated from the word plus the record id.
-5. The card is inserted into Supabase and appears on the wall.
+2. Click or tap the house to enter The Hub navigation.
+3. Choose **Let us get to know you** for the personality-card wall, or **Explore our annual plan** to draw from the year-plan deck.
+4. On the wall: submit one word (max 20 characters, no spaces or markup). A unique SVG card is generated and saved.
+5. In the annual plan: draw a card, read it, then draw another until every activity has been seen.
+
+The annual-plan deck is local static content. Personality cards still use Supabase (or a local archive if keys are missing).
+
+A temporary `/plan-demo` route also renders the annual-plan deck for isolated testing.
 
 Common words such as curious, calm, bold, creative, and analytical lean toward related motifs. Every other word still gets a coherent card from the seeded visual system.
