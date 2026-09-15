@@ -1,0 +1,275 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  color: #efe3cb;
+  background:
+    radial-gradient(ellipse 80% 46% at 50% -8%, rgb(198 164 106 / 12%), transparent 58%),
+    linear-gradient(180deg, #141c14 0%, #0f1711 52%, #0c120e 100%);
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  margin: 0 auto;
+  max-width: 28rem;
+  padding: max(1.25rem, env(safe-area-inset-top)) 1.15rem 0.4rem;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.42em;
+  color: #c6a46a;
+}
+
+.title {
+  margin: 0.7rem 0 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: clamp(1.7rem, 7vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #f4ead6;
+}
+
+.subtitle {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  color: rgb(216 203 176 / 80%);
+}
+
+.note {
+  margin: 0.45rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: rgb(216 203 176 / 52%);
+}
+
+.dockNote {
+  margin: 0.55rem 0 0;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: rgb(216 203 176 / 52%);
+}
+
+.status {
+  margin: 3rem 1rem;
+  text-align: center;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  color: rgb(216 203 176 / 70%);
+}
+
+.scroll {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stage {
+  position: relative;
+  width: min(100%, 26rem);
+  margin: 0 auto;
+  padding: 0 0.5rem 1.5rem;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.stemShadow {
+  fill: none;
+  stroke: #243528;
+  stroke-width: 6.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+}
+
+.stem {
+  fill: none;
+  stroke: #6a7a48;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.branch {
+  fill: none;
+  stroke: #5a6b42;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+.branchNew {
+  stroke-dasharray: 90;
+  stroke-dashoffset: 90;
+  animation: vine-draw 0.7s ease forwards;
+}
+
+.bud {
+  fill: #c6a46a;
+  opacity: 0.85;
+}
+
+.hit {
+  position: absolute;
+  width: 2.85rem;
+  height: 2.85rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.hit:focus-visible {
+  outline: 2px solid #c6a46a;
+  outline-offset: 3px;
+}
+
+.leaf {
+  transform-box: fill-box;
+  transform-origin: 8px 8px;
+  transition: transform 280ms ease, filter 280ms ease;
+}
+
+.leafNew {
+  animation: vine-unfold 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.leafPulse {
+  filter: drop-shadow(0 0 8px rgb(198 164 106 / 55%));
+  transform: translate(1px, -3px);
+}
+
+.invite {
+  margin: 0.15rem 0 0;
+  text-align: center;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: rgb(216 203 176 / 72%);
+}
+
+.dock {
+  position: relative;
+  z-index: 6;
+  flex-shrink: 0;
+  border-top: 1px solid rgb(198 164 106 / 16%);
+  background: rgb(13 21 16 / 92%);
+  backdrop-filter: blur(12px);
+  padding: 0.85rem 1rem max(1rem, env(safe-area-inset-bottom));
+}
+
+.notice {
+  margin: 0 0 0.55rem;
+  text-align: center;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #c6a46a;
+}
+
+.popover {
+  position: absolute;
+  z-index: 8;
+  width: min(14.5rem, calc(100% - 1.5rem));
+  border: 1px solid rgb(198 164 106 / 45%);
+  border-radius: 1rem;
+  background: #f4ead6;
+  padding: 0.85rem 0.95rem 0.95rem;
+  color: #1a1408;
+  text-align: center;
+  box-shadow: 0 16px 36px rgb(0 0 0 / 32%);
+  transform: translate(-50%, calc(-100% - 0.7rem));
+}
+
+.popoverBelow {
+  transform: translate(-50%, 1.15rem);
+}
+
+.popoverWord {
+  margin: 0;
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  color: #1a1408;
+  overflow-wrap: anywhere;
+}
+
+.popoverMeta {
+  margin: 0.3rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a5a28;
+}
+
+.close {
+  margin-top: 0.55rem;
+  min-height: 2.25rem;
+  border: 0;
+  background: transparent;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #314232;
+  cursor: pointer;
+}
+
+.close:focus-visible {
+  outline: 2px solid #7a5a28;
+  outline-offset: 3px;
+}
+
+@keyframes vine-unfold {
+  from {
+    opacity: 0.15;
+    transform: scale(0.18) rotate(-18deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes vine-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hit:hover {
+    filter: drop-shadow(0 0 7px rgb(198 164 106 / 35%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf,
+  .leafNew,
+  .branchNew {
+    animation: none;
+    transition: none;
+  }
+
+  .branchNew {
+    stroke-dashoffset: 0;
+  }
+}

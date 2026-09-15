@@ -17,7 +17,7 @@ Edit `.env.local` with your Supabase values, or leave them blank to use a local 
 npm run dev
 ```
 
-Open [http://127.0.0.1:43147](http://127.0.0.1:43147).
+Open [http://127.0.0.1:43147](http://127.0.0.1:43147). The growing-vine prototype is at [http://127.0.0.1:43147/vine-demo](http://127.0.0.1:43147/vine-demo).
 
 Without Supabase keys, cards are stored in `localStorage`. They will not be shared with other visitors until you connect a project.
 
@@ -155,6 +155,10 @@ If cards disappear after refresh, the Vercel env vars are missing or the Supabas
 
 The annual-plan deck is local static content. Personality cards still use Supabase (or a local archive if keys are missing).
 
-A temporary `/plan-demo` route also renders the annual-plan deck for isolated testing.
+Temporary isolated demo routes (not in Hub navigation):
+
+- `/plan-demo` — annual-plan deck
+- `/team-demo` — Meet The Team
+- `/vine-demo` — growing-vine prototype of the one-word archive. Reuses the existing `cards` table. Visual layout is derived in the browser from `id`, `word`, `seed`, and `created_at`. The production personality-card wall is unchanged.
 
 Common words such as curious, calm, bold, creative, and analytical lean toward related motifs. Every other word still gets a coherent card from the seeded visual system.
