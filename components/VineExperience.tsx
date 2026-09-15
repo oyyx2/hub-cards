@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { GrowingVine } from "@/components/GrowingVine";
+import { HubBackButton } from "@/components/HubBackButton";
 import { VineWordInput } from "@/components/VineWordInput";
 import { fetchCards, insertCard, isSupabaseConfigured, subscribeToCards } from "@/lib/supabase";
 import { makeSeed } from "@/lib/seed";
@@ -10,7 +11,11 @@ import { VINE_DISPLAY_LIMIT } from "@/lib/vineLayout";
 import type { HubCard } from "@/lib/types";
 import styles from "./vine.module.css";
 
-export function VineExperience() {
+type VineExperienceProps = {
+  onBack?: () => void;
+};
+
+export function VineExperience({ onBack }: VineExperienceProps) {
   const [cards, setCards] = useState<HubCard[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
   const [selected, setSelected] = useState<HubCard | null>(null);
@@ -112,6 +117,11 @@ export function VineExperience() {
     <div className={styles.page}>
       <div className="hub-grain pointer-events-none absolute inset-0" />
       <header className={styles.header}>
+        {onBack ? (
+          <div className={styles.backRow}>
+            <HubBackButton onBack={onBack} />
+          </div>
+        ) : null}
         <p className={styles.kicker}>The Hub</p>
         <h1 className={styles.title}>Leave a word. Let The Hub grow.</h1>
         <p className={styles.subtitle}>Every word becomes part of the vine.</p>

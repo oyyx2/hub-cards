@@ -1,8 +1,8 @@
 # The Hub
 
-A student committee campaign page. Visitors enter The Hub, describe themselves in one word, and receive a unique archive-style card. Every card is saved and stays on the wall for the next person who walks in.
+A student committee campaign page. Visitors enter The Hub, describe themselves in one word, and that word becomes a unique leaf on a shared vine. Every word is saved and stays on the vine for the next person who walks in.
 
-This is an MVP: no login, no AI image generation, and no dragging. Cards are generated in the browser from a deterministic seed.
+This is an MVP: no login, no AI image generation. Leaf shapes are generated in the browser from a deterministic seed.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ npm run dev
 
 Open [http://127.0.0.1:43147](http://127.0.0.1:43147). The growing-vine prototype is at [http://127.0.0.1:43147/vine-demo](http://127.0.0.1:43147/vine-demo).
 
-Without Supabase keys, cards are stored in `localStorage`. They will not be shared with other visitors until you connect a project.
+Without Supabase keys, words are stored in `localStorage`. They will not be shared with other visitors until you connect a project.
 
 ```bash
 npm run build
@@ -137,28 +137,28 @@ If you change env vars later, go to **Settings → Environment Variables**, save
 
 ### After deploy, verify
 
-1. Open the Vercel URL on desktop. Click the house, add a word, confirm the card appears.
-2. Refresh. The same card should still be there (this proves Supabase, not only local storage).
-3. Open the same URL on a phone. The house should stay centered, the wall should scroll, and the input should stay visible.
-4. Add a second word on the phone, refresh, and confirm both cards remain.
+1. Open the Vercel URL on desktop. Click the house, choose **Leave Your Mark**, add a word, confirm a leaf appears.
+2. Refresh. The same leaf should still be there (this proves Supabase, not only local storage).
+3. Open the same URL on a phone. The house should stay centered, the vine should scroll, and the input should stay visible.
+4. Add a second word on the phone, refresh, and confirm both leaves remain.
 5. Use that Vercel URL for the QR code.
 
-If cards disappear after refresh, the Vercel env vars are missing or the Supabase SQL has not been run.
+If leaves disappear after refresh, the Vercel env vars are missing or the Supabase SQL has not been run.
 
 ## What it does
 
 1. Black entrance with a glowing blue house.
 2. Click or tap the house to enter The Hub navigation.
-3. Choose **Let us get to know you** for the personality-card wall, or **Explore our annual plan** to draw from the year-plan deck.
-4. On the wall: submit one word (max 20 characters, no spaces or markup). A unique SVG card is generated and saved.
+3. Choose **Leave Your Mark** to grow the shared vine, **Explore Our Plan** to draw from the year-plan deck, or **Meet The Team**.
+4. On the vine: submit one word (max 20 characters, no spaces or markup). It is saved with the existing `cards` flow and becomes a unique leaf.
 5. In the annual plan: draw a card, read it, then draw another until every activity has been seen.
 
-The annual-plan deck is local static content. Personality cards still use Supabase (or a local archive if keys are missing).
+The annual-plan deck and team module are local static content. One-word leaves still use Supabase (or a local archive if keys are missing). The previous personality-card components remain in the repo but are no longer opened from Hub navigation.
 
-Temporary isolated demo routes (not in Hub navigation):
+Temporary isolated demo routes:
 
 - `/plan-demo` — annual-plan deck
 - `/team-demo` — Meet The Team
-- `/vine-demo` — growing-vine prototype of the one-word archive. Reuses the existing `cards` table. Visual layout is derived in the browser from `id`, `word`, `seed`, and `created_at`. The production personality-card wall is unchanged.
+- `/vine-demo` — the same vine experience, kept for comparison/debugging
 
 Common words such as curious, calm, bold, creative, and analytical lean toward related motifs. Every other word still gets a coherent card from the seeded visual system.

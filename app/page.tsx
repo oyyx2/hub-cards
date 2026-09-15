@@ -4,8 +4,8 @@ import { useRef, useState } from "react";
 import { AnnualPlanDeck } from "@/components/AnnualPlanDeck";
 import { Entrance } from "@/components/Entrance";
 import { HubNavigation } from "@/components/HubNavigation";
-import { HubRoom } from "@/components/HubRoom";
 import { TeamSection } from "@/components/TeamSection";
+import { VineExperience } from "@/components/VineExperience";
 
 type Phase = "gate" | "leaving" | "nav" | "you" | "plan" | "team";
 
@@ -24,7 +24,7 @@ export default function Home() {
     <div className="relative min-h-dvh bg-black">
       {phase === "you" ? (
         <div className="hub-fade-in">
-          <HubRoom active onBack={() => setPhase("nav")} />
+          <VineExperience onBack={() => setPhase("nav")} />
         </div>
       ) : null}
       {phase === "plan" ? (

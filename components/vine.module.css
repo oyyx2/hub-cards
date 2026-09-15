@@ -19,6 +19,12 @@
   text-align: center;
 }
 
+.backRow {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 0.7rem;
+}
+
 .kicker {
   margin: 0;
   font-family: var(--font-cormorant), ui-serif, Georgia, serif;
